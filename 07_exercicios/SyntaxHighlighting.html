@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Código Fonte</title>
+    <style>
+        code {
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Código Fonte</h1>
+    <pre>
+  <code>
+        package regex;
+        /*
+        * Imprimir a nota do aluno
+        */
+        public class Nota {
+            // Porta de entrada de um programa Java
+            public static void main(String[] args) {
+                int nota = 7;
+                if(nota >= 7) {
+                    System.out.println("Aprovado");
+                } else {
+                    System.out.println("Reprovado");
+                }
+            }
+        }
+  </code>
+  </pre>
+</body>
+<script>
+    const html = document.querySelector("html");
+
+    let texto = html.innerHTML;
+
+    const aplicaCor = (txt, reg, cor) => String(txt).replace(reg, `<spam style='color:#${cor}'><b>$1</b></spam>`);
+
+    const codeRegex = /<code>[\s\S]*<\/code>/gi;
+
+    let code = texto.match(codeRegex);
+
+	// Textos de String:
+	code = aplicaCor(code, /(\".*\")/g, 'ce9178');
+
+	// Palavras reservadas:
+	code = aplicaCor(code, /\b(package|public|class|static|if|else)\b/g, 'd857cf');
+
+	// Tipos primitivos:
+	code = aplicaCor(code, /\b(void|int)\b/g, '1385e2');
+
+	// Comentários de múltiplas linhas:
+	code = aplicaCor(code, /(\/\*[\s\S]*\*\/)/g, '267703');
+
+	// Comentários de uma liha:
+	code = aplicaCor(code, /(\/\/.+)/g, '267703');
+
+
+    document.querySelector("code").innerHTML = code;
+
+</script>
+
+</html>
